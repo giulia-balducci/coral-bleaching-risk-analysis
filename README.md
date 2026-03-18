@@ -11,7 +11,7 @@ of coral bleaching — a phenomenon I have witnessed firsthand as a scuba
 instructor with 1,600+ dives, over 1,200 of which were in the Coral Triangle.
 
 ## Dataset
-**Source:** van Woesik & Kratochwill (2022), Global Coral-Bleaching Database  
+**Source:** Van Woesik & Kratochwill (2022), Global Coral-Bleaching Database  
 **Access:** [BCO-DMO](https://www.bco-dmo.org/dataset/773466) / [Kaggle](https://www.kaggle.com/datasets/mehrdat/coral-reef-global-bleaching)  
 **Size:** 41,361 observations across 62 variables, 1980–2020
 
