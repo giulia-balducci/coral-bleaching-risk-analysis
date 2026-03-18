@@ -35,5 +35,5 @@ coral-bleaching-risk-analysis/
 🚧 Work in progress
 
 ## Author
-Giulia Balducci — PhD Chemist pivoting into data science  
+Giulia Balducci — PhD in Materials Chemistry pivoting into Data Science
 [LinkedIn](https://www.linkedin.com/in/giuliabalducci) | [GitHub](https://github.com/giulia-balducci) | [Kaggle](https://www.kaggle.com/giuliabalducci)
