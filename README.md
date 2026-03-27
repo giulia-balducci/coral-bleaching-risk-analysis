@@ -23,17 +23,17 @@ coral-bleaching-risk-analysis/
 │   └── processed/    # cleaned data
 ├── notebooks/
 │   ├── 01_data_loading_and_cleaning.ipynb
-│   ├── 02_eda.ipynb
-│   ├── 03_feature_engineering.ipynb
-│   └── 04_modelling.ipynb
+│   ├── 02_eda.ipynb #coming soon
+│   ├── 03_feature_engineering.ipynb #coming soon
+│   └── 04_modelling.ipynb #coming soon
 ├── outputs/
 │   └── figures/
 └── requirements.txt
 ```
 
 ## Status
-🚧 Work in progress
+🟡 In progress — Notebook 01 (data loading & cleaning) complete. EDA underway.
 
 ## Author
-Giulia Balducci — PhD in Materials Chemistry pivoting into Data Science
+Giulia Balducci — Materials Chemistry PhD | Data Scientist
 [LinkedIn](https://www.linkedin.com/in/giuliabalducci) | [GitHub](https://github.com/giulia-balducci) | [Kaggle](https://www.kaggle.com/giuliabalducci)
