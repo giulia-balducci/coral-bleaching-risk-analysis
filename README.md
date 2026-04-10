@@ -23,7 +23,7 @@ coral-bleaching-risk-analysis/
 │   └── processed/    # cleaned data
 ├── notebooks/
 │   ├── 01_data_loading_and_cleaning.ipynb
-│   ├── 02_eda.ipynb #coming soon
+│   ├── 02_eda.ipynb #in progress
 │   ├── 03_feature_engineering.ipynb #coming soon
 │   └── 04_modelling.ipynb #coming soon
 ├── outputs/
@@ -32,7 +32,13 @@ coral-bleaching-risk-analysis/
 ```
 
 ## Status
-🟡 In progress — Notebook 01 (data loading & cleaning) complete. EDA underway.
+🟡 In progress — Notebook 01 complete. Notebook 02 (EDA) in progress: missing values, target variable, temporal trends and geographical distribution complete. Correlations and class imbalance assessment pending.
+
+## Future Work
+- Interactive map with temporal slider for bleaching severity evolution by site
+- Overlay of bleaching data with SSTA and ocean current data
+- Regional models (Atlantic, Indo-Pacific, Mediterranean) after global baseline
+- LSTM for SST time series and missing value imputation
 
 ## Author
 Giulia Balducci — Materials Chemistry PhD | Data Scientist
