@@ -6,3 +6,5 @@ missingno
 scikit-learn
 scipy
 jupyter
+geopandas
+geodatasets

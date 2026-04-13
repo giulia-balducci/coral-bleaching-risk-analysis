@@ -24,7 +24,7 @@ coral-bleaching-risk-analysis/
 ├── notebooks/
 │   ├── 01_data_loading_and_cleaning.ipynb
 │   ├── 02_eda.ipynb
-│   ├── 03_feature_engineering.ipynb #in progress
+│   ├── 03_feature_selection.ipynb #in progress
 │   └── 04_modelling.ipynb #coming soon
 ├── outputs/
 │   └── figures/
