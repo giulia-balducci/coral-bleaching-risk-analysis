@@ -32,7 +32,7 @@ coral-bleaching-risk-analysis/
 ```
 
 ## Status
-🟡 In progress — Notebook 01 complete. Notebook 02 (EDA) complete. Notebook 03 (feature engineering) in progress.
+🟡 In progress — Notebook 01 (Data loading and cleaning) complete. Notebook 02 (EDA) complete. Notebook 03 (feature selection) in progress.
 
 ## Future Work
 - Interactive map with temporal slider for bleaching severity evolution by site
