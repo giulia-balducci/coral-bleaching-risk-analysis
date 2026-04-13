@@ -23,8 +23,8 @@ coral-bleaching-risk-analysis/
 │   └── processed/    # cleaned data
 ├── notebooks/
 │   ├── 01_data_loading_and_cleaning.ipynb
-│   ├── 02_eda.ipynb #in progress
-│   ├── 03_feature_engineering.ipynb #coming soon
+│   ├── 02_eda.ipynb
+│   ├── 03_feature_engineering.ipynb #in progress
 │   └── 04_modelling.ipynb #coming soon
 ├── outputs/
 │   └── figures/
@@ -32,7 +32,7 @@ coral-bleaching-risk-analysis/
 ```
 
 ## Status
-🟡 In progress — Notebook 01 complete. Notebook 02 (EDA) in progress: missing values, target variable, temporal trends and geographical distribution complete. Correlations and class imbalance assessment pending.
+🟡 In progress — Notebook 01 complete. Notebook 02 (EDA) complete. Notebook 03 (feature engineering) in progress.
 
 ## Future Work
 - Interactive map with temporal slider for bleaching severity evolution by site
