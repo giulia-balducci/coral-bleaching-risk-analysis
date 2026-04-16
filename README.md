@@ -39,6 +39,11 @@ coral-bleaching-risk-analysis/
 - Overlay of bleaching data with SSTA and ocean current data
 - Regional models (Atlantic, Indo-Pacific, Mediterranean) after global baseline
 - LSTM for SST time series and missing value imputation
+- Coupling of the bleaching risk classifier with an SST/DHW forecasting model 
+  to predict bleaching risk under future climate scenarios, enabling site-specific 
+  early warning and monitoring
+- Validation against the 2024 global bleaching event as a qualitative 
+  geographic check of model predictions
 
 ## Author
 Giulia Balducci — Materials Chemistry PhD | Data Scientist
