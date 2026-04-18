@@ -32,7 +32,7 @@ coral-bleaching-risk-analysis/
 ```
 
 ## Status
-🟡 In progress — Notebook 01 (Data loading and cleaning) complete. Notebook 02 (EDA) complete. Notebook 03 (feature selection) in progress.
+🟡 In progress — Notebook 01 (Data loading and cleaning) complete. Notebook 02 (EDA) complete. Notebook 03 (Feature selection) complete. Notebook 04 (Preprocessing and modelling) in progress.
 
 ## Future Work
 - Interactive map with temporal slider for bleaching severity evolution by site
@@ -46,5 +46,5 @@ coral-bleaching-risk-analysis/
   geographic check of model predictions
 
 ## Author
-Giulia Balducci — Materials Chemistry PhD | Data Scientist
+Giulia Balducci — Data Scientist | Materials Chemistry PhD
 [LinkedIn](https://www.linkedin.com/in/giuliabalducci) | [GitHub](https://github.com/giulia-balducci) | [Kaggle](https://www.kaggle.com/giuliabalducci)
