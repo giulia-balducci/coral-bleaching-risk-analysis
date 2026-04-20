@@ -25,19 +25,30 @@ coral-bleaching-risk-analysis/
 │   ├── 01_data_loading_and_cleaning.ipynb
 │   ├── 02_eda.ipynb
 │   ├── 03_feature_selection.ipynb
-│   └── 04_preprocessing_and_modelling.ipynb #in progress
+│   ├── 04_preprocessing_and_modelling.ipynb
+│   └── 05_atlantic_model.ipynb #in progress
 ├── outputs/
 │   └── figures/
 └── requirements.txt
 ```
 
 ## Status
-🟡 In progress — Notebook 01 (Data loading and cleaning) complete. Notebook 02 (EDA) complete. Notebook 03 (Feature selection) complete. Notebook 04 (Preprocessing and modelling) in progress.
+🟡 In progress — Notebooks 01–04 complete. Notebook 05 (Atlantic regional model) in progress.
+
+Notebook 04 covers: preprocessing pipeline, 4-class baseline models (LR, RF, XGBoost), binary classification + SMOTE, error analysis, hyperparameter tuning (manual), SHAP interpretability, and a regional Atlantic model analysis.
+
+## Key Results
+- Global binary model (Random Forest + SMOTE): bleaching recall 0.64, macro F1 0.73
+- Atlantic regional model: in progress
+- Error analysis revealed structural geographic bias: Atlantic FN rate 0.19 vs Pacific 0.74
+- Root cause: Pacific major bleaching events (2016, 2020, 2022, 2024) fall outside the training window
 
 ## Future Work
+- Extended dataset (post-2020) to capture Pacific bleaching events (2020, 2022, 2024)
+  — required for a meaningful Pacific regional model
+- Regional models (Indo-Pacific, Mediterranean) after Atlantic model is validated
 - Interactive map with temporal slider for bleaching severity evolution by site
 - Overlay of bleaching data with SSTA and ocean current data
-- Regional models (Atlantic, Indo-Pacific, Mediterranean) after global baseline
 - LSTM for SST time series and missing value imputation
 - Coupling of the bleaching risk classifier with an SST/DHW forecasting model 
   to predict bleaching risk under future climate scenarios, enabling site-specific 
