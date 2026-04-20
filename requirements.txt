@@ -8,3 +8,9 @@ scipy
 jupyter
 geopandas
 geodatasets
+imbalanced-learn
+shap
+streamlit
+plotly
+joblib
+xgboost
