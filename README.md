@@ -19,29 +19,36 @@ instructor with 1,600+ dives, over 1,200 of which were in the Coral Triangle.
 ```
 coral-bleaching-risk-analysis/
 ├── data/
-│   ├── raw/          # original data (not tracked by Git)
-│   └── processed/    # cleaned data
+│   ├── raw/                              # original data (not tracked by Git)
+│   └── processed/
+│       ├── bleaching_clean.csv           # cleaned dataset
+│       ├── bleaching_feature_selection.csv
+│       ├── atlantic_sites_latest.csv     # one row per site (dashboard map)
+│       └── atlantic_sites_history.csv    # all observations per site (dashboard history panel)
 ├── notebooks/
 │   ├── 01_data_loading_and_cleaning.ipynb
 │   ├── 02_eda.ipynb
 │   ├── 03_feature_selection.ipynb
 │   ├── 04_preprocessing_and_modelling.ipynb
-│   └── 05_atlantic_model.ipynb #in progress
+│   └── 05_atlantic_model.ipynb
+├── models/
+│   ├── rf_atlantic_model.pkl
+│   └── rf_atlantic_preprocessor.pkl
 ├── outputs/
 │   └── figures/
 └── requirements.txt
 ```
 
 ## Status
-🟡 In progress — Notebooks 01–04 complete. Notebook 05 (Atlantic regional model) in progress.
+🟡 In progress — Notebooks 01–05 complete. Streamlit dashboard in progress.
 
-Notebook 04 covers: preprocessing pipeline, 4-class baseline models (LR, RF, XGBoost), binary classification + SMOTE, error analysis, hyperparameter tuning (manual), SHAP interpretability, and a regional Atlantic model analysis.
+Notebook 05 covers: Atlantic regional model (RF + SMOTE), substrate ablation, SHAP interpretability, error analysis, model saving, and dashboard data export.
 
 ## Key Results
 - Global binary model (Random Forest + SMOTE): bleaching recall 0.64, macro F1 0.73
-- Atlantic regional model: in progress
-- Error analysis revealed structural geographic bias: Atlantic FN rate 0.19 vs Pacific 0.74
-- Root cause: Pacific major bleaching events (2016, 2020, 2022, 2024) fall outside the training window
+- Atlantic regional model (no substrate): bleaching recall 0.78, macro F1 0.69
+- Error analysis: Atlantic FN rate 0.22 (vs 0.39 global), FP rate 0.31 (vs 0.34 global)
+- Root cause of global model bias: Pacific major bleaching events (2016, 2020, 2022, 2024) fall outside the training window
 
 ## Future Work
 - Extended dataset (post-2020) to capture Pacific bleaching events (2020, 2022, 2024)
