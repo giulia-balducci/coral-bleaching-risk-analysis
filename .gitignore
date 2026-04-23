@@ -1,2 +1,3 @@
 data/raw/
 outputs/*.pptx
+outputs/generate_slides.py
