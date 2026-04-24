@@ -2,7 +2,8 @@ import streamlit as st
 import pandas as pd
 import numpy as np
 import plotly.express as px
-import joblib
+import boto3
+import json
 st.set_page_config(layout='wide')
 
 st.markdown("""
@@ -29,16 +30,19 @@ def load_dataset():
     df_history = pd.read_csv('data/processed/atlantic_sites_history.csv')
     return df_latest, df_history
 
-# Creating the st.cache_resource for model and preprocessor to reduce loading time and better user experience
-@st.cache_resource
-def load_model_and_preprocessor():
-    model = joblib.load('models/rf_atlantic_model.pkl')
-    preprocessor = joblib.load('models/rf_atlantic_preprocessor.pkl')
-    return model, preprocessor
-
-# Invoking the functions to load both datasets, model and preprocessor
+ENDPOINT_NAME = 'sagemaker-scikit-learn-2026-04-24-08-32-29-498'
+                                                                                       
+NUM_COLS = [
+      'Distance_to_Shore', 'Turbidity', 'Cyclone_Frequency', 'Date_Month',             
+      'Date_Year', 'Depth_m', 'ClimSST', 'Temperature_Kelvin', 'Temperature_Mean',     
+      'Temperature_Maximum', 'Windspeed', 'SSTA', 'SSTA_DHW',
+      'TSA', 'TSA_Maximum', 'TSA_Mean', 'TSA_Frequency',                               
+      'TSA_DHW', 'TSA_DHWMax', 'TSA_DHWMean'
+  ]                                                                                    
+CAT_COLS = ['Realm_Name', 'Exposure']
+                                                                                       
+# Invoking the function to load both datasets                                        
 df_latest, df_history = load_dataset()
-model, preprocessor = load_model_and_preprocessor()
 
 # Setting the title and the layout of the dashboard
 st.title('Coral Bleaching Analysis and Prediction')
@@ -154,15 +158,22 @@ with col_right:
         with col_predict:
             st.write('')
             st.write('')
-            if st.button('Predict Bleaching Risk', use_container_width=True):
-                X = pd.DataFrame([site_latest])
-                X['Temperature_Mean'] = temp + 273.15
-                X['TSA_DHW'] = dhw
-                X['TSA_Frequency'] = tsa_freq
-                X['Date_Month'] = month
-                X['Date_Year'] = year
-                X_transformed = preprocessor.transform(X)
-                st.session_state['prediction'] = model.predict(X_transformed)[0]
+            if st.button('Predict Bleaching Risk', use_container_width=True):                    
+                payload = {col: float(site_latest[col]) for col in NUM_COLS}
+                payload.update({col: str(site_latest[col]) for col in CAT_COLS})                 
+                payload['Temperature_Mean'] = temp + 273.15
+                payload['TSA_DHW'] = dhw                                                         
+                payload['TSA_Frequency'] = tsa_freq
+                payload['Date_Month'] = month                                                    
+                payload['Date_Year'] = year
+                runtime = boto3.client('sagemaker-runtime', region_name='us-east-1')             
+                response = runtime.invoke_endpoint(                                              
+                    EndpointName=ENDPOINT_NAME,
+                    ContentType='application/json',                                              
+                    Body=json.dumps(payload)
+                )
+                result = json.loads(response['Body'].read())
+                st.session_state['prediction'] = result['prediction']  
 
         if 'prediction' in st.session_state:
             if st.session_state['prediction'] == 'bleaching':
