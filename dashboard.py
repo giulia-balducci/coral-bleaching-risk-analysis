@@ -2,6 +2,7 @@ import streamlit as st
 import pandas as pd
 import numpy as np
 import plotly.express as px
+import plotly.graph_objects as go
 import boto3
 import json
 st.set_page_config(layout='wide')
@@ -15,6 +16,15 @@ st.markdown("""
 [data-testid="stSlider"] [data-testid="stSliderTrackFill"] {
     background-color: coral !important;
 }
+[data-testid="stSlider"] label, [data-testid="stSlider"] p {
+    font-size: 17px !important;
+}
+[data-testid="stDataFrame"] * {
+    font-size: 19px !important;
+}
+[data-testid="stAlert"] p {
+    font-size: 17px !important;
+}
 </style>
 """, unsafe_allow_html=True)
 
@@ -23,6 +33,24 @@ color_primary = 'teal'
 color_secondary = 'coral'
 color_accent = 'turquoise'
 
+COUNTRY_FLAGS = {
+    'United States': '🇺🇸', 'Mexico': '🇲🇽', 'Belize': '🇧🇿',
+    'Honduras': '🇭🇳', 'Guatemala': '🇬🇹', 'Nicaragua': '🇳🇮',
+    'Costa Rica': '🇨🇷', 'Panama': '🇵🇦', 'Cuba': '🇨🇺',
+    'Jamaica': '🇯🇲', 'Haiti': '🇭🇹', 'Dominican Republic': '🇩🇴',
+    'Puerto Rico': '🇵🇷', 'Bahamas': '🇧🇸', 'Turks and Caicos Islands': '🇹🇨',
+    'Cayman Islands': '🇰🇾', 'British Virgin Islands': '🇻🇬',
+    'US Virgin Islands': '🇻🇮', 'Barbados': '🇧🇧',
+    'Trinidad and Tobago': '🇹🇹', 'Colombia': '🇨🇴', 'Venezuela': '🇻🇪',
+    'Brazil': '🇧🇷', 'Bermuda': '🇧🇲', 'Guadeloupe': '🇬🇵',
+    'Martinique': '🇲🇶', 'Aruba': '🇦🇼', 'Antigua and Barbuda': '🇦🇬',
+    'Saint Kitts and Nevis': '🇰🇳', 'Saint Lucia': '🇱🇨',
+    'Saint Vincent and the Grenadines': '🇻🇨', 'Grenada': '🇬🇩',
+    'Dominica': '🇩🇲', 'Anguilla': '🇦🇮', 'Bonaire': '🇧🇶',
+    'Curacao': '🇨🇼', 'Sint Maarten': '🇸🇽', 'Guyana': '🇬🇾',
+    'Suriname': '🇸🇷',
+}
+
 # Creating the st.cache_data for the datasets to reduce loading time and better user experience
 @st.cache_data
 def load_dataset():
@@ -30,7 +58,7 @@ def load_dataset():
     df_history = pd.read_csv('data/processed/atlantic_sites_history.csv')
     return df_latest, df_history
 
-ENDPOINT_NAME = 'sagemaker-scikit-learn-2026-04-24-08-32-29-498'
+ENDPOINT_NAME = 'sagemaker-scikit-learn-2026-04-25-08-46-35-011'
                                                                                        
 NUM_COLS = [
       'Distance_to_Shore', 'Turbidity', 'Cyclone_Frequency', 'Date_Month',             
@@ -46,7 +74,7 @@ df_latest, df_history = load_dataset()
 
 # Setting the title and the layout of the dashboard
 st.title('Coral Bleaching Analysis and Prediction')
-col_map, col_right = st.columns([4, 2])
+col_map, col_right = st.columns([1, 1])
 with col_map:
     st.subheader('Atlantic Reef Sites')
     # Creating a temporary column to use ad legend input
@@ -64,7 +92,7 @@ with col_map:
         zoom=2.5,
         map_style='carto-positron'
     )
-    fig.update_layout(legend=dict(x=0.87, y=0.96),
+    fig.update_layout(legend=dict(x=0.84, y=0.99, font=dict(size=14)),
                       height=600)
     selected = st.plotly_chart(fig, width='stretch', on_select='rerun', key='map')
 
@@ -95,6 +123,9 @@ with col_right:
         site_history['Site_Name'] = site_name
         site_history = site_history[['Date_Year', 'Date_Month', 'Date', 'Site_Name', 'Country_Name', 'Status']].sort_values(['Date_Year', 'Date_Month'])
         site_history = site_history[['Date', 'Site_Name', 'Country_Name', 'Status']].drop_duplicates(subset=['Date'])
+        site_history['Country_Name'] = site_history['Country_Name'].apply(
+            lambda c: f"{COUNTRY_FLAGS.get(c, '')} {c}" if pd.notna(c) else c
+        )
         st.dataframe(site_history, hide_index=True)
         # Latest observation for slider defaults
         # .iloc[0] converts the filtered DataFrame (1-row table) into a Series
