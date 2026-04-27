@@ -58,7 +58,7 @@ def load_dataset():
     df_history = pd.read_csv('data/processed/atlantic_sites_history.csv')
     return df_latest, df_history
 
-ENDPOINT_NAME = 'sagemaker-scikit-learn-2026-04-25-08-46-35-011'
+ENDPOINT_NAME = 'sagemaker-scikit-learn-2026-04-27-17-19-16-812'
                                                                                        
 NUM_COLS = [
       'Distance_to_Shore', 'Turbidity', 'Cyclone_Frequency', 'Date_Month',             

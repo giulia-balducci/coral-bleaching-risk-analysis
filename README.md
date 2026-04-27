@@ -7,7 +7,7 @@ and building a predictive risk model using 40 years of environmental data (1980�
 ## Motivation
 Coral reefs cover less than 1% of the ocean floor but support 25% of all 
 marine species. Rising sea surface temperatures (SST) are the primary driver 
-of coral bleaching — a phenomenon I have witnessed firsthand as a scuba 
+of coral bleaching, a phenomenon I have witnessed firsthand as a scuba 
 instructor with 1,600+ dives, over 1,200 of which were in the Coral Triangle.
 
 ## Dataset
@@ -34,20 +34,38 @@ coral-bleaching-risk-analysis/
 ├── models/
 │   ├── rf_atlantic_model.pkl
 │   └── rf_atlantic_preprocessor.pkl
+├── sagemaker_deploy/
+│   ├── deploy.py                         # deploys model to AWS SageMaker
+│   └── code/
+│       └── inference.py                  # SageMaker inference handler
 ├── outputs/
 │   └── figures/
+├── dashboard.py                          # Streamlit app
 └── requirements.txt
 ```
 
+## Dashboard
+Interactive Streamlit app for exploring Atlantic reef sites and predicting bleaching risk. Runs locally; connects to a deployed AWS SageMaker endpoint for real-time inference.
+
+To run:
+```bash
+streamlit run dashboard.py
+```
+
+**Features:**
+- Interactive map of Atlantic reef sites, colour-coded by bleaching status
+- Click any site to view its full bleaching history
+- Adjust environmental sliders (temperature, degree heating weeks, thermal stress frequency) and predict bleaching risk in real time via the SageMaker endpoint
+
 ## Status
-🟡 In progress — Notebooks 01–05 complete. Streamlit dashboard in progress.
+🟢 Complete — Notebooks 01–05, Streamlit dashboard, and AWS SageMaker deployment.
 
 Notebook 05 covers: Atlantic regional model (RF + SMOTE), substrate ablation, SHAP interpretability, error analysis, model saving, and dashboard data export.
 
 ## Key Results
-- Global binary model (Random Forest + SMOTE): bleaching recall 0.64, macro F1 0.73
+- Global binary model (Random Forest + SMOTE): bleaching recall 0.61, macro F1 0.73
 - Atlantic regional model (no substrate): bleaching recall 0.78, macro F1 0.69
-- Error analysis: Atlantic FN rate 0.22 (vs 0.39 global), FP rate 0.31 (vs 0.34 global)
+- Error analysis: Atlantic FN rate 0.23 (vs 0.39 global), FP rate 0.31 (vs 0.34 global)
 - Root cause of global model bias: Pacific major bleaching events (2016, 2020, 2022, 2024) fall outside the training window
 
 ## Future Work
