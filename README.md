@@ -63,9 +63,12 @@ streamlit run dashboard.py
 Notebook 05 covers: Atlantic regional model (RF + SMOTE), substrate ablation, SHAP interpretability, error analysis, model saving, and dashboard data export.
 
 ## Key Results
-- Global binary model (Random Forest + SMOTE): bleaching recall 0.61, macro F1 0.73
-- Atlantic regional model (no substrate): bleaching recall 0.78, macro F1 0.69
-- Error analysis: Atlantic FN rate 0.23 (vs 0.39 global), FP rate 0.31 (vs 0.34 global)
+
+All metrics are reported on the held-out test set (2015-2019) unless otherwise noted.
+
+- Global binary model (Random Forest + SMOTE): bleaching recall 0.58, macro F1 0.81
+- Atlantic regional model (no substrate): bleaching recall 0.82, macro F1 0.82
+- Error analysis (validation set 2010-2014, used to identify failure patterns and inform tuning decisions): Atlantic FN rate 0.23 (vs 0.39 global), FP rate 0.31 (vs 0.34 global)
 - Root cause of global model bias: Pacific major bleaching events (2016, 2020, 2022, 2024) fall outside the training window
 
 ## Future Work
