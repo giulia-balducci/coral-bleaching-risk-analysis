@@ -48,16 +48,16 @@ coral-bleaching-risk-analysis/
 ## Dashboard
 Interactive Streamlit app for exploring Atlantic reef sites and predicting bleaching risk. Available in two versions with identical functionality, differing only in how predictions are made:
 
-- **`dashboard_local.py`** — loads `models/rf_atlantic_model.pkl` and `models/rf_atlantic_preprocessor.pkl` directly and runs inference locally. No AWS account or credentials required — works out of the box on any machine with the repo cloned and dependencies installed.
-- **`dashboard_sagemaker.py`** — archival version, documents the original production architecture with an AWS SageMaker endpoint. Endpoint decommissioned to avoid ongoing costs; kept for reference. Would require redeploying the endpoint (see `sagemaker_deploy/`) and AWS credentials to run.
+- **`dashboard_local.py`** - loads `models/rf_atlantic_model.pkl` and `models/rf_atlantic_preprocessor.pkl` directly and runs inference locally. No AWS account or credentials required — works out of the box on any machine with the repo cloned and dependencies installed.
+- **`dashboard_sagemaker.py`** - archival version, documents the original production architecture with an AWS SageMaker endpoint. Endpoint decommissioned to avoid ongoing costs; kept for reference. Would require redeploying the endpoint (see `sagemaker_deploy/`) and AWS credentials to run.
 
 To run locally (recommended for most users):
 ```bash
 streamlit run dashboard_local.py
 ```
 
-**Live demo:** [coral-bleaching-risk.streamlit.app](https://coral-bleaching-risk.streamlit.app)  
-*(SageMaker endpoint decommissioned to avoid ongoing costs — live demo runs local inference.)*
+**Live demo:** [coral-bleaching-risk-analysis.streamlit.app](https://coral-bleaching-risk-analysis.streamlit.app/)  
+*(SageMaker endpoint decommissioned to avoid ongoing costs, live demo runs local inference.)*
 
 **Features:**
 - Interactive map of Atlantic reef sites, colour-coded by bleaching status
@@ -65,7 +65,7 @@ streamlit run dashboard_local.py
 - Adjust environmental sliders (temperature, degree heating weeks, thermal stress frequency) and predict bleaching risk in real time
 
 ## Status
-🟢 Complete — Notebooks 01–05, Streamlit dashboard (local and archival SageMaker versions). SageMaker endpoint decommissioned; live demo runs local inference.
+🟢 Complete - Notebooks 01–05, Streamlit dashboard (local and archival SageMaker versions). SageMaker endpoint decommissioned; live demo runs local inference.
 
 Notebook 05 covers: Atlantic regional model (RF + SMOTE), substrate ablation, SHAP interpretability, error analysis, model saving, and dashboard data export.
 
@@ -92,5 +92,5 @@ All metrics are reported on the held-out test set (2015-2019) unless otherwise n
   geographic check of model predictions
 
 ## Author
-Giulia Balducci — Data Scientist | Materials Chemistry PhD
+Giulia Balducci - Data Scientist | Materials Chemistry PhD
 [LinkedIn](https://www.linkedin.com/in/giuliabalducci) | [GitHub](https://github.com/giulia-balducci) | [Kaggle](https://www.kaggle.com/giuliabalducci)
