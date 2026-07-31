@@ -1,3 +1,11 @@
 data/raw/
 outputs/*.pptx
 outputs/generate_slides.py
+.DS_Store
+.DS_Store
+Bleaching Lit Review/
+coral-bleaching-risk-analysis-deliverables/
+coral_bleaching_speaker_notes.txt
+demo_day_notes.txt
+demo_day_script_8min.txt
+notebooks/06_global_atlantic_apples.ipynb
